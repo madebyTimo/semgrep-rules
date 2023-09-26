@@ -1,0 +1,19 @@
+name: Dependency analysis
+
+on:
+    schedule:
+        - cron: "00 04 * * 1"
+    pull_request:
+    push:
+       branches:
+         - "main"
+    workflow_dispatch:
+
+jobs:
+    analyze:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Dependency analysis
+              uses: mbT-Infrastructure/github-action-dependency-analysis@v0.0.2
